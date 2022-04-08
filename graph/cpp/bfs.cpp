@@ -2,37 +2,33 @@
 
 using namespace std;
 
-// smaller priority
 vector<int> dske[101];
 int visited[101];
+queue<int> temp;
+	int n, m;
 
-void dfs(int u) {
+void bfs(int u) {
+	temp.push(u);
 	visited[u]=1;
-	cout << u << " ";
-	for (int v : dske[u]) {
-		if (!visited[v]) {
-			dfs(v);
+	while (temp.size() != 0) {
+		int v = temp.front();
+		temp.pop();
+		cout << v << " ";
+		for (int x : dske[v]) {
+			if (!visited[x]){
+				temp.push(x);
+				visited[x]=1;
+			}
 		}
-	}
-}
 
-// smaller priority
-void dfs1(int u) {
-	visited[u] = 1;
-	cout << u << " ";
-	for (int v = dske[u].size()-1;v >= 0;v--) {
-		if (!visited[dske[u].at(v)]) {
-			dfs(dske[u].at(v));
-		}
 	}
 }
 
 int main() {
-	freopen("../input/dfs.txt", "r", stdin);
-	int n, m;
+	freopen("../input/bfs.txt", "r", stdin);
 	cin >> n >> m;
-	for (int i=0;i < m;i++){
-		int x, y;
+	for (int i =0;i<m;i++) {
+		int x,  y;
 		cin >> x >> y;
 		dske[x].push_back(y);
 		dske[y].push_back(x);
@@ -45,5 +41,5 @@ int main() {
 		cout << endl;
 	}
 	cout << endl;
-	dfs(1);
+	bfs(1);
 }
