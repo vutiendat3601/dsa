@@ -2,29 +2,33 @@
 
 using namespace std;
 
-int bin[10];
+int res[21];
 int n;
 
-void printResult() {
+void printRes() {
 	for (int i=1;i<=n;i++){
-		cout << bin[i];
+		cout << res[i];
 	}
 	cout << endl;
 }
 
-void genBin(int i) {
-	for (int j = 0;j<=1;j++) {
-		bin[i] = j;
-		if (i == n) {
-			printResult();
-		}
-		else {
-			genBin(i+1);
+void solve(int iTh) {
+	// thu moi gia tri res[iTh] co the nhan
+	for (int i=0;i<=1;i++){
+		// thu gan res[iTh]
+		res[iTh] = i;
+		
+		// neu iTh o vi tri cuoi cung, thong bao cau hinh tim duoc
+		if (iTh == n){
+			printRes();
+		} else {
+			// chon tiep phan tu tiep theo
+			solve(iTh+1);
 		}
 	}
 }
 
 int main() {
-	n =3;
-	genBin(1);
+	n=3;
+	solve(1);
 }

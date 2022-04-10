@@ -2,48 +2,33 @@
 
 using namespace std;
 
-// smaller priority
 vector<int> dske[101];
 int visited[101];
+int n, m;
 
 void dfs(int u) {
+	// ghi nhan viec tham dinh u
 	visited[u]=1;
 	cout << u << " ";
-	for (int v : dske[u]) {
+
+	// duyet cac phan tu ke u
+	for (int v : dske[u]){
+
+		// neu phan tu ke u chua tham thi goi de quy de tham
 		if (!visited[v]) {
 			dfs(v);
 		}
 	}
 }
 
-// smaller priority
-void dfs1(int u) {
-	visited[u] = 1;
-	cout << u << " ";
-	for (int v = dske[u].size()-1;v >= 0;v--) {
-		if (!visited[dske[u].at(v)]) {
-			dfs(dske[u].at(v));
-		}
-	}
-}
-
 int main() {
 	freopen("../input/dfs.txt", "r", stdin);
-	int n, m;
 	cin >> n >> m;
-	for (int i=0;i < m;i++){
+	for (int i = 0; i< m;i++){
 		int x, y;
 		cin >> x >> y;
 		dske[x].push_back(y);
 		dske[y].push_back(x);
 	}
-	for (int i=1;i<=n;i++) {
-		cout << i << ": ";
-		for (vector<int>::iterator it = dske[i].begin(); it != dske[i].end(); it++) {
-			cout << *it << " ";
-		}
-		cout << endl;
-	}
-	cout << endl;
 	dfs(1);
 }

@@ -2,24 +2,28 @@
 
 using namespace std;
 
-int subset[21];
+int res[21];
 int n, k;
 
-void printResult() {
-	for (int i=1;i<=k;i++) {
-		cout << subset[i];
+void printRes() {
+	for (int i=1;i<=k;i++){
+		cout << res[i];
 	}
 	cout << endl;
 }
 
-void genSubset(int i) {
-	for (int j=subset[i-1]+1;j<= n-k+i;j++) {
-		subset[i]=j;
-		if (i==k){
-			printResult();
-		}
-		else {
-			genSubset(i+1);
+void solve(int iTh) {
+	// thu tat ca cac kha nang res[iTh co the nhan]
+	for (int i = res[iTh-1]+1; i <= (n-k+iTh); i++){
+		// thu dat res[iTh]
+		res[iTh]=i;
+
+		// neu day la phan tu cuoi cung thong bao cau hinh tim duoc
+		if (iTh == k){
+			printRes();
+		} else {
+			// goi de quy xay dung phan tu tiep theo
+			solve(iTh+1);
 		}
 	}
 }
@@ -27,5 +31,5 @@ void genSubset(int i) {
 int main() {
 	n = 5;
 	k = 3;
-	genSubset(1);
+	solve(1);
 }
