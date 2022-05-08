@@ -1,0 +1,8 @@
+ABCDEGH
+5
+B A
+AD CE
+D H
+GH C
+AC D
+AC
