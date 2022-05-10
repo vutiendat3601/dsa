@@ -1,8 +1,5 @@
-ABCDEGH
-5
-B A
-AD CE
-D H
-GH C
-AC D
-AC
+ABCD
+3
+C A
+B AD
+D B

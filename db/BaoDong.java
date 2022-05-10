@@ -6,7 +6,6 @@
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
@@ -15,7 +14,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class BaoDong {
-    private Scanner scan = new Scanner(System.in);
+    private Scanner scan = App.scan;
     // Attriubutes
     private String attribute;
     private Map<String, String> f;
@@ -69,9 +68,13 @@ public class BaoDong {
                     for (char c : res.toCharArray()) {
                         reschars.add(c);
                     }
+
+                    String newAttrs = "";
                     for (char c : f.get(x).toCharArray()) {
                         reschars.add(c);
+                        newAttrs += c;
                     }
+
                     String preRes = res;
                     res = "";
                     Iterator<Character> c = reschars.iterator();
@@ -80,6 +83,8 @@ public class BaoDong {
                     }
                     if (!preRes.equals(res)) {
                         fIter = f.keySet().iterator();
+                        System.out.println(
+                                preRes + " => " + res + " \t|Da them " + newAttrs + " vi " + x + " -> " + f.get(x));
                     }
                 }
             }
@@ -100,9 +105,11 @@ public class BaoDong {
 
     // Main
     public static void main(String[] args) throws FileNotFoundException {
-        System.setIn(new FileInputStream("timkhoa.txt"));
-        BaoDong t = new BaoDong();
-        t.input();
-        System.out.println(t.timBaoDong());
+        System.setIn(new FileInputStream("baodong.txt"));
+        BaoDong baoDong = new BaoDong();
+        baoDong.scan = new Scanner(System.in);
+        baoDong.input();
+        System.out.println("Tim bao dong " + baoDong.getTarget() + " cua tap phu thuoc ham F tren " + baoDong.getAttribute());
+        System.out.println("Ket qua: " + baoDong.timBaoDong());
     }
 }
