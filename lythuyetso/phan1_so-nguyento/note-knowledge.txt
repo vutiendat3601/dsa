@@ -1,0 +1,8 @@
+Phần 1:
+    - Sàng Eratosthenes
+    - Cách tìm bội nhỏ nhất của một số mà lớn hơn 1 giá trị nào đó
+    - Cách tìm cặp số nguyên tố bằng với 1 giá trị cho trước (i && n-i)
+    - Cách đặt vị trí điều kiện trong đại số boole
+    - Cặp số nguyên tố cùng nhau (ước chung lớn nhất là 1)
+    - Công thức tính số ước (x1+1)(x2+1).(xn+1)
+    - 
