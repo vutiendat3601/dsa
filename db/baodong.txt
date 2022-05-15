@@ -1,8 +1,8 @@
 ABCDEGH
 5
-AB E
-AG F
-BE I
-E G
-GI H
-AB
+B A
+AD CE
+D H
+GH C
+AC D
+AC

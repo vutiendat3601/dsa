@@ -1,5 +1,6 @@
-ABCD
-3
-C A
-B AD
-D B
+ABCDEG
+4
+AE C
+CG A
+BD G
+AG E
