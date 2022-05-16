@@ -4,6 +4,12 @@ public class BinaryTree {
     // Attribtes
     private TreeNode<Integer> root;
 
+    // Getters, setters
+
+    public TreeNode<Integer> getRoot() {
+        return root;
+    }
+
     // Constructors
 
     public BinaryTree() {
