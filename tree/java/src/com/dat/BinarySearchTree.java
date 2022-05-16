@@ -36,6 +36,8 @@ public class BinarySearchTree {
         n3.left = n2;
     }
 
+    // INSERT
+
     public void insert(int key) {
         root = insertRecur(root, key);
     }
@@ -55,6 +57,8 @@ public class BinarySearchTree {
 
         return root;
     }
+
+    // DELETE
 
     public void deleteKey(int key) {
         root = deleteRecur(root, key);
