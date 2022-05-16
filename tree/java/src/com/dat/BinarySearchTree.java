@@ -36,57 +36,57 @@ public class BinarySearchTree {
         n3.left = n2;
     }
 
-    public void insert(TreeNode<Integer> root, int value) {
-        if (root == null) {
-            this.root = new TreeNode<>(value);
-        } else {
-            if (value > root.value) {
-                if (root.right == null) {
-                    root.right = new TreeNode<>(value);
-                    return;
-                }
-                root = root.right;
-            } else if (value < root.value) {
-                if (root.left == null) {
-                    root.left = new TreeNode<>(value);
-                    return;
-                }
-                root = root.left;
-            }
-        }
-        insert(root, value);
+    public void insert(int key) {
+        root = insertRecur(root, key);
     }
 
-    private TreeNode<Integer> findLeftMostNode(TreeNode<Integer> root) {
+    private TreeNode<Integer> insertRecur(TreeNode<Integer> root, int key) {
+
         if (root == null) {
-            return null;
+            root = new TreeNode<>(key);
+            return root;
         }
-        TreeNode<Integer> res = root;
+
+        if (key < root.value) {
+            root.left = insertRecur(root.left, key);
+        } else if (key > root.value) {
+            root.right = insertRecur(root.right, key);
+        }
+
+        return root;
+    }
+
+    public void deleteKey(int key) {
+        root = deleteRecur(root, key);
+    }
+
+    private int findMinLeftValue(TreeNode<Integer> root) {
+        int res = root.value;
         while (root.left != null) {
-            res = res.left;
+            root = root.left;
+            res = root.value;
         }
         return res;
     }
 
-    public TreeNode<Integer> deleteNode(TreeNode<Integer> root, int key) {
+    private TreeNode<Integer> deleteRecur(TreeNode<Integer> root, int key) {
         if (root == null) {
             return root;
         }
+
         if (key < root.value) {
-            root.left = deleteNode(root.left, key);
+            root.left = deleteRecur(root.left, key);
         } else if (key > root.value) {
-            root.right = deleteNode(root.right, key);
+            root.right = deleteRecur(root.right, key);
         } else {
-            if (root.left == null && root.right == null) {
-                return null;
-            } else if (root.left == null) {
+            if (root.left == null) {
                 return root.right;
             } else if (root.right == null) {
                 return root.left;
             }
-            TreeNode<Integer> leftMostNode = findLeftMostNode(root.right);
-            root.value = leftMostNode.value;
-            root.right = deleteNode(root.right, leftMostNode.value);
+            int minLeftValue = findMinLeftValue(root.right);
+            root.value = minLeftValue;
+            root.right = deleteRecur(root.right, minLeftValue);
         }
         return root;
     }
