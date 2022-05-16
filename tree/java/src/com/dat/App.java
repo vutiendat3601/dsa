@@ -5,6 +5,7 @@ public class App {
         BinarySearchTree bst = new BinarySearchTree();
         bst.init();
         bst.insert(bst.getRoot(), 6);
+        bst.deleteNode(bst.getRoot(), 3);
         System.out.println();
     }
 }
