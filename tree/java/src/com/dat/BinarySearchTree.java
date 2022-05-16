@@ -4,6 +4,12 @@ public class BinarySearchTree {
     // Attribtes
     private TreeNode<Integer> root;
 
+    // Getters, setter
+
+    public TreeNode<Integer> getRoot() {
+        return root;
+    }
+
     // Constructors
 
     public BinarySearchTree() {
@@ -26,5 +32,26 @@ public class BinarySearchTree {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
+    }
+
+    public void insert(TreeNode<Integer> root, int value) {
+        if (root == null) {
+            this.root = new TreeNode<>(value);
+        } else {
+            if (value > root.value) {
+                if (root.right == null) {
+                    root.right = new TreeNode<>(value);
+                    return;
+                }
+                root=root.right;
+            } else if (value < root.value) {
+                if (root.left == null) {
+                    root.left = new TreeNode<>(value);
+                    return;
+                }
+                root=root.left;
+            }
+        }
+        insert(root, value);
     }
 }

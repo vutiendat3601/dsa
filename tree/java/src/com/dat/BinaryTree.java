@@ -27,4 +27,5 @@ public class BinaryTree {
         n1.right = n4;
         n2.right = n5;
     }
+
 }
